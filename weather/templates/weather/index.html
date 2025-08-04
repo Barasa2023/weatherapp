@@ -46,17 +46,17 @@
 <body>
   <div class="container">
     <div class="weather-card mx-auto">
-      <h1 class="mb-4">WeatherNow 🌤️</h1>
+      <h1 class="mb-4">Weather Now 🌤️</h1>
 
       <!-- Search Form -->
       <form method="get" class="d-flex mb-4">
         <input type="text" name="city" class="form-control me-2" placeholder="Enter city..." required>
-        <button class="btn btn-primary">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
       </form>
 
       <!-- Weather Info -->
-      {% if weather.city %}
-        <h2>{{ weather.city }}</h2>
+      {% if weather.location %}
+        <h2>{{ weather.location }}</h2>
         <div class="weather-icon">
           <i class="wi wi-day-sunny"></i>
           <!-- you can map icons dynamically later -->
