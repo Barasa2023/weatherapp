@@ -75,6 +75,27 @@
         </div>
       {% endif %}
     </div>
+    {% if forecast %}
+  <h3 class="mt-4">5-Day Forecast</h3>
+  <div class="row justify-content-center">
+    {% for day in forecast %}
+      <div class="col-md-2 col-6 mb-3">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <p class="fw-bold">{{ day.date }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ day.icon }}@2x.png" alt="{{ day.desc }}">
+            <p>{{ day.temp }}°C</p>
+            <p class="text-capitalize small">{{ day.desc }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
+
   </div>
 
   <!-- Bootstrap JS -->
