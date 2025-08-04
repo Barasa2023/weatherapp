@@ -7,10 +7,20 @@ def index(request):
     """Render the index page."""
     api_key = '9750ce5bd3642197183bf37924b84db9'
     city = request.GET.get('city', 'Mombasa')
+    lat = request.GET.get('lat')
+    lon = request.GET.get('lon')
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
     data = response.json()
     weather, forecast = {}, []
+
+    if lat and lon:
+        url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}&units=metric"
+        forecast_url = f"http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}&units=metric"
+    else:
+        city = city or "Nairobi"
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+        forecast_url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric"
 
     if data.get('main'):
         weather = {
